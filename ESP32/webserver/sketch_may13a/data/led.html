@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 LED Steuerung</title>
+    <script>
+        function sendRequest(url) {
+            fetch(url)
+                .then(response => console.log("Anfrage gesendet: " + url))
+                .catch(error => console.error("Fehler:", error));
+        }
+    </script>
+
+    <style>
+        button {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>LED Steuerung</h1>
+    <button onclick="sendRequest('/ledOn')" style="background-color: red;">LED AN</button>
+    <button onclick="sendRequest('/ledOff')" style="background-color: gray;">LED AUS</button>
+</body>
+</html>

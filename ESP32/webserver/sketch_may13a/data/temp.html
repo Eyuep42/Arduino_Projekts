@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Temperaturanzeige</title>
+    <script>
+        function updateTemperature() {
+            fetch('/temperature')
+                .then(response => response.text())
+                .then(temp => {
+                    document.getElementById('tempValue').innerText = temp + " °C";
+                })
+                .catch(error => console.error("Fehler beim Abrufen der Temperatur:", error));
+        }
+
+        setInterval(updateTemperature, 5000); // Aktualisiert die Temperatur alle 5 Sekunden
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .temp-box {
+            background-color: lightblue;
+            padding: 20px;
+            font-size: 24px;
+            display: inline-block;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ESP32 Temperaturanzeige</h1>
+    <div class="temp-box">
+        <p>Aktuelle Temperatur:</p>
+        <p id="tempValue">Lade...</p>
+    </div>
+</body>
+</html>
